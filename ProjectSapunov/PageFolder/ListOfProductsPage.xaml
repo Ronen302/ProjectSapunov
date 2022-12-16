@@ -1,0 +1,71 @@
+﻿<Page x:Class="ProjectSapunov.PageFolder.ListOfProductsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:ProjectSapunov.PageFolder"
+      mc:Ignorable="d" 
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Medium"
+      TextElement.FontSize="14"
+      FontFamily="{materialDesign:MaterialDesignFont}"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ListOfProductsPage" IsVisibleChanged="IsVisibleChanged_Changed">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="85"/>
+            <ColumnDefinition Width="85"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Label Content="Действия" Grid.ColumnSpan="2"
+               Grid.Column="0" Grid.Row="5"
+               HorizontalContentAlignment="Left" 
+               VerticalContentAlignment="Center" 
+               FontSize="12" FontWeight="Bold"
+               Foreground="#a7a7a7" Margin="15 3 4 4"/>
+        <Button x:Name="AddProductBtn" Content="Добавить товар"
+                Grid.Column="0" Grid.Row="6"
+                Foreground="#4a4a49" Grid.ColumnSpan="2"
+                Style="{DynamicResource MaterialDesignFlatButton}" Height="Auto"
+                Click="AddProductBtn_Click"/>
+        <Button x:Name="DeleteProductBtn" Content="Удалить товар"
+                Grid.Column="0" Grid.Row="7"
+                Foreground="#4a4a49" Grid.ColumnSpan="2"
+                Style="{DynamicResource MaterialDesignFlatButton}" Height="Auto"
+                Click="DeleteProductBtn_Click"/>
+        <DataGrid x:Name = "ProductsDG" Grid.Row = "2" Grid.Column="2"
+                  Grid.RowSpan="10" AutoGenerateColumns = "False"
+                  IsReadOnly = "True">
+            <DataGrid.Columns >
+                <DataGridTextColumn x:Name = "dgTcIdProduct"
+                                    Header = "№ п/п"
+                                    Binding = "{Binding IdProduct}" />
+                <DataGridTextColumn x:Name = "dgTcProductName"
+                                    Header = "Заказ"
+                                    Binding = "{Binding NameProduct}" />
+                <DataGridTextColumn x:Name = "dgTcProductCount"
+                                    Header = "Количество на складе"
+                                    Binding = "{Binding CountInStore}" />
+            </DataGrid.Columns >
+        </DataGrid >
+        <Frame NavigationUIVisibility="Hidden" x:Name = "MainFrameListProducts" Grid.ColumnSpan = "3" Grid.RowSpan = "13"
+               Grid.Column = "0" Grid.Row = "0" Margin="0,0,0,-27" />
+    </Grid>
+</Page>
